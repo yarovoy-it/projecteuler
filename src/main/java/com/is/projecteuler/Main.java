@@ -1,0 +1,8 @@
+package com.is.projecteuler;
+
+public class Main {
+
+    public static void main(String[] args){
+        
+    }
+}
