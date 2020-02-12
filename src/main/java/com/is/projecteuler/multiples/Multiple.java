@@ -1,5 +1,6 @@
 package com.is.projecteuler.multiples;
 
+
 public class Multiple {
 
     public static Integer finder(Integer first, Integer second) {
