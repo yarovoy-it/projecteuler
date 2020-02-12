@@ -9,6 +9,4 @@ public class Main {
         differenceSquare(100, 100);
 
     }
-
-
 }
