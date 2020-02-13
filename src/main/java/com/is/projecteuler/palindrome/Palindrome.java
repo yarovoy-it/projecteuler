@@ -2,21 +2,43 @@ package com.is.projecteuler.palindrome;
 
 import java.util.Objects;
 
+/**
+ * A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+ * <p>
+ * Find the largest palindrome made from the product of two 3-digit numbers.
+ */
 public class Palindrome {
 
-    public static long finder() {
-        Integer palindrome = 0;
-        for (int i = 999; i >= 100; i--) {
-            for (int x = i; x <= 999; x++) {
-                int temp = x * i;
-                if (isPalindrome(temp))
-                    palindrome = palindrome < temp ? temp : palindrome;
+    /**
+     * Find the largest palindrome from to.
+     * <p>
+     * A palindromic number reads the same both ways
+     *
+     * @return largest palindrome
+     */
+    public static long findLargestPalindrome(int from, int to) {
+        if (from < 0 || to <= from) {
+            throw new IllegalArgumentException("Not correct value this number can not be negative " + from +
+                    " or more then this " + to);
+        }
+        long maxPalindrome = 0;
+        for (int currNumb1 = to; currNumb1 >= from; currNumb1--) {
+            for (int currNumb2 = currNumb1; currNumb2 <= to; currNumb2++) {
+                int palindrome = currNumb2 * currNumb1;
+                if (isPalindrome(palindrome))
+                    maxPalindrome = maxPalindrome < palindrome ? palindrome : maxPalindrome;
             }
         }
-        return palindrome;
+        return maxPalindrome;
     }
 
-    public static Boolean isPalindrome(Integer number) {
+    /**
+     * Is palindrome boolean.
+     *
+     * @param number the number
+     * @return palindrome or not, the boolean
+     */
+    private static boolean isPalindrome(Integer number) {
         return Objects.equals(number, Integer.parseInt(new StringBuilder(number.toString()).reverse().toString()));
     }
 }
