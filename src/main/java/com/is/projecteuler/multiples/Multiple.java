@@ -1,5 +1,7 @@
 package com.is.projecteuler.multiples;
 
+import java.util.List;
+
 /**
  * If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
  * The sum of these multiples is 23.
@@ -9,23 +11,41 @@ package com.is.projecteuler.multiples;
 public class Multiple {
 
     /**
-     * Sum of multiples below 1000.
+     * Sum of list multiples below count.
      *
-     * @param first  the first multiples
-     * @param second the second multiples
-     * @return sum of all the multiples below 1000, the integer
+     * @param multiples   List of numbers multiples
+     * @param numberBelow Until what number can get sum of multiples from list of multiples les
+     * @return sum of all the multiples below count, the integer
      */
-    public static Integer sumOfMultiples(Integer first, Integer second) {
-        Integer sum = 0;
-        if (first != null && second != null && first != 0 && second != 0) {
-            Integer counter = 1000;
-            for (int i = 0; i < counter; i++) {
-                if (i % first == 0 | i % second == 0) {
-                    sum += i;
+    public static int sumOfMultiples(int numberBelow, List<Integer> multiples) {
+        int result = 0;
+        if (numberBelow > 0) {
+            for (int inspectorNumber = 0; inspectorNumber < numberBelow; inspectorNumber++) {
+                if (isMultiples(inspectorNumber, multiples)) {
+                    result += inspectorNumber;
+                }
+            }
+            return result;
+        }
+        throw new IllegalArgumentException("Not correct value " + numberBelow);
+    }
+
+    /**
+     * Check by checkerOfMultiples all integers from list of multiples
+     *
+     * @param checkerOfMultiples inspector of number
+     * @param multiples List of divider
+     * @return boolean. Is the number a multiple
+     */
+    private static boolean isMultiples(int checkerOfMultiples, List<Integer> multiples) {
+        for (Integer divider : multiples) {
+            if (divider != null && divider != 0) {
+                if (checkerOfMultiples % divider == 0) {
+                    return true;
                 }
             }
         }
-        return sum;
+        return false;
     }
-    
+
 }
