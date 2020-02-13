@@ -8,7 +8,7 @@ import java.util.List;
  * <p>
  * What is the largest prime factor of the number 600851475143 ?
  */
-public class Factor {
+public class Factorial {
 
     /**
      * From number method calculate the factorials and return list

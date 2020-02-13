@@ -1,11 +1,11 @@
 package com.is.projecteuler.factor;
 
-import static com.is.projecteuler.factor.PrimeFactor.counter;
+import static com.is.projecteuler.factor.Factorial.calculatorFactorial;
 
-public class Main {
+public class Runner {
 
     public static void main(String[] args) {
-        System.out.println(counter(15L));
+        System.out.println(calculatorFactorial(13195));
     }
 
 }
