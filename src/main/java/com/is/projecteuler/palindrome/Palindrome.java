@@ -24,8 +24,8 @@ public class Palindrome {
         long maxPalindrome = 0;
         for (int currNumb1 = to; currNumb1 >= from; currNumb1--) {
             for (int currNumb2 = currNumb1; currNumb2 <= to; currNumb2++) {
-                int palindrome = currNumb2 * currNumb1;
-                if (isPalindrome(palindrome))
+                Integer palindrome = currNumb2 * currNumb1;
+                if (isPalindrome(palindrome.toString()))
                     maxPalindrome = maxPalindrome < palindrome ? palindrome : maxPalindrome;
             }
         }
@@ -35,10 +35,13 @@ public class Palindrome {
     /**
      * Is palindrome boolean.
      *
-     * @param number the number
+     * @param palindrome string
      * @return palindrome or not, the boolean
      */
-    private static boolean isPalindrome(Integer number) {
-        return Objects.equals(number, Integer.parseInt(new StringBuilder(number.toString()).reverse().toString()));
+    public static boolean isPalindrome(String palindrome) {
+        if (palindrome == null){
+            throw new IllegalArgumentException("Oooops something wrong with this: " + palindrome);
+        }
+        return Objects.equals(palindrome, new StringBuilder(palindrome).reverse().toString());
     }
 }
