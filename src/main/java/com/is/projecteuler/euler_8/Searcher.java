@@ -28,38 +28,32 @@ package com.is.projecteuler.euler_8;
  */
 public class Searcher {
 
-    public static int defineOfLargestSum(int stringOfValue) {
-        int[] numberSum = new int[4];
-        for (int i = 0; i < 4; i++) {
-            numberSum[i] = stringOfValue;
+    /**
+     * Find the adjacent digits in the "stringOfNumber" that have the greatest product.
+     *
+     * @param stringOfNumber the string of number
+     * @param adjacentDigit  the adjacentDigit
+     * @return max sun of "adjacentDigit" from "stringOfNumber"
+     */
+    public static Long stringToInt(String stringOfNumber, int adjacentDigit) {
+        if (adjacentDigit < 1) {
+            throw new IllegalArgumentException("Not correct value of " + adjacentDigit);
         }
-
-        return 0;
-    }
-
-    public static int stringToInt(String string) {
-        int sum = 0;
-        int maxSum = 0;
-        int numberFromString = 0;
-        Integer[] numberSum = new Integer[4];
-        for (int i = 0; i < string.length(); i++) {
-            char c = string.charAt(i);
-            numberFromString = Integer.parseInt(String.valueOf(c));
-            if (i < 4)
-                numberSum[i] = numberFromString;
-            if (i > 3) {
-                sum = replacer(numberSum, numberFromString);
-                maxSum = sum < maxSum ? maxSum : sum;
+        if (stringOfNumber == null) {
+            return null;
+        }
+        long maxSum = -1;
+        for (int i = 0; i <= stringOfNumber.length() - adjacentDigit; i++) {
+            long sum = 1;
+            for (int j = 0; j < adjacentDigit; j++) {
+                sum *= stringOfNumber.charAt(i + j) - '0';
             }
+            maxSum = Math.max(sum, maxSum);
         }
         return maxSum;
     }
-
-    private static Integer replacer(Integer[] array, int newInt) {
-        array[0] = array[1];
-        array[1] = array[2];
-        array[2] = array[3];
-        array[3] = newInt;
-        return array[0] * array[1] * array[2] * array[3];
-    }
 }
+
+
+
+

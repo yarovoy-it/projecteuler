@@ -6,6 +6,6 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        System.out.println(stringToInt(StringStorage.stringLoader()));
+        System.out.println(stringToInt(StringStorage.stringLoader(),13));
     }
 }
