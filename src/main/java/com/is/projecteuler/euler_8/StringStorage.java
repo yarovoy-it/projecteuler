@@ -1,7 +1,15 @@
 package com.is.projecteuler.euler_8;
 
+/**
+ * The type String storage.
+ */
 public class StringStorage {
 
+    /**
+     * Load string of numbers.
+     *
+     * @return the string
+     */
     public static String stringLoader() {
         return "73167176531330624919225119674426574742355349194934" +
                 "96983520312774506326239578318016984801869478851843" +

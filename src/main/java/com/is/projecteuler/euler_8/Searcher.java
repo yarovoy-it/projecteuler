@@ -42,11 +42,11 @@ public class Searcher {
         if (stringOfNumber == null) {
             return null;
         }
-        long maxSum = -1;
-        for (int i = 0; i <= stringOfNumber.length() - adjacentDigit; i++) {
+        long maxSum = 0;
+        for (int fromNumber = 0; fromNumber <= stringOfNumber.length() - adjacentDigit; fromNumber++) {
             long sum = 1;
-            for (int j = 0; j < adjacentDigit; j++) {
-                sum *= stringOfNumber.charAt(i + j) - '0';
+            for (int toNumber = 0; toNumber < adjacentDigit; toNumber++) {
+                sum *= Character.getNumericValue(stringOfNumber.charAt(fromNumber + toNumber)) ;
             }
             maxSum = Math.max(sum, maxSum);
         }
