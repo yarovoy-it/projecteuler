@@ -1,4 +1,4 @@
-package com.is.projecteuler.palindrome;
+package com.is.projecteuler.euler_4;
 
 import java.util.Objects;
 
@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Palindrome {
 
     /**
-     * Find the largest palindrome from to.
+     * Find the largest palindrome "from" number until "to".
      * <p>
      * A palindromic number reads the same both ways
      *
@@ -24,8 +24,8 @@ public class Palindrome {
         long maxPalindrome = 0;
         for (int currNumb1 = to; currNumb1 >= from; currNumb1--) {
             for (int currNumb2 = currNumb1; currNumb2 <= to; currNumb2++) {
-                Integer palindrome = currNumb2 * currNumb1;
-                if (isPalindrome(palindrome.toString()))
+                int palindrome = currNumb2 * currNumb1;
+                if (isPalindrome(Integer.toString(palindrome)))
                     maxPalindrome = maxPalindrome < palindrome ? palindrome : maxPalindrome;
             }
         }
@@ -39,8 +39,8 @@ public class Palindrome {
      * @return palindrome or not, the boolean
      */
     public static boolean isPalindrome(String palindrome) {
-        if (palindrome == null){
-            throw new IllegalArgumentException("Oooops something wrong with this: " + palindrome);
+        if (palindrome == null) {
+            throw new IllegalArgumentException("Oooops something wrong with this: " + null);
         }
         return Objects.equals(palindrome, new StringBuilder(palindrome).reverse().toString());
     }
