@@ -32,42 +32,8 @@ public class Factor {
         return primeFactors;
     }
 
-//    /**
-//     * Define factors from list then put in map, where key is number, value is list of prime factors
-//     *
-//     * @param numbers list of number
-//     * @return map key is number value is list of prime factors
-//     */
-//    public static Map<Long, Set<Long>> definerPrimeFactors(List<Long> numbers) {
-//        if (numbers == null) {
-//            throw new IllegalArgumentException("No reason looking for prime factors " + null);
-//        }
-//        Map<Long, Set<Long>> mapOfPrimeFactors = new HashMap<>();
-//        for (Long numberForPrimeFactor : numbers) {
-//            if (numberForPrimeFactor != null)
-//                mapOfPrimeFactors.put(numberForPrimeFactor, definerPrimeFactors(numberForPrimeFactor));
-//        }
-//
-//        return mapOfPrimeFactors;
-//    }
-
-//    /**
-//     * Define all dividers
-//     *
-//     * @param number for defining list of divider
-//     * @return list of dividers
-//     */
-//    public static List<Integer> definerAllDivider(long number) {
-//        List<Integer> dividers = new ArrayList<>();
-//        for (int divider = 1; divider <= number; divider++) {
-//            if (number % divider == 0)
-//                dividers.add(divider);
-//        }
-//        return dividers;
-//    }
-
     /**
-     * Define simple divider and print of them in a short variation
+     * Define simple divider return map
      *
      * @param number the number which will print
      */
@@ -82,7 +48,7 @@ public class Factor {
             }
             countDegree = 0;
         }
-        printShortVariation(divinerDegree);
+        return divinerDegree;
     }
 
     /**
@@ -92,11 +58,12 @@ public class Factor {
      *
      * @param map key number, value degree
      */
-    private static void printShortVariation(Map<Integer, Integer> map) {
+    public static void printShortFormula(Map<Integer, Integer> map) {
         int counter = 1;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             printSymbol(entry.getKey(), entry.getValue());
-            printSymbol(map.size() > counter);
+            if (map.size() > counter)
+                System.out.print(" * ");
             counter++;
         }
     }
@@ -115,6 +82,7 @@ public class Factor {
             System.out.print(key + "^" + value);
         }
     }
+
 }
 
 
