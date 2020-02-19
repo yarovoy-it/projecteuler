@@ -1,12 +1,14 @@
 package com.is.projecteuler.euler_10;
 
 import static com.is.projecteuler.euler_10.PrimesSum.SumOfSimpleNumber;
+import static com.is.projecteuler.euler_10.PrimesSum.SumOfSimpleNumberByRec;
 
 public class Runner {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        System.out.println(SumOfSimpleNumber(2_000_000));
+        System.out.println(SumOfSimpleNumberByRec(4));
+//        System.out.println(SumOfSimpleNumber(4));
 
     }
 }

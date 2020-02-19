@@ -18,6 +18,17 @@ public class PrimesSum {
         return sum;
     }
 
+    public static int SumOfSimpleNumberByRec(int number) {
+        int sum = 0;
+        if (number < 1) {
+            return sum;
+        }
+//        if (isSimple(number)) {
+            System.out.println(number);
+            sum = number + SumOfSimpleNumberByRec(number - 1);
+//        }
+        return sum;
+    }
 
     private static boolean isSimple(int number) {
         for (int i = 2; i < number; i++) {
