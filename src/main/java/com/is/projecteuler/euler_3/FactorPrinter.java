@@ -16,10 +16,10 @@ public class FactorPrinter {
      */
     public static void printViewNumberDividerDegree(long number) {
         System.out.print(number + " = ");
-        Map<Integer, Integer> map = definerSimpleDividerToMap(number);
+        Map<Integer, Integer> map = defineSimpleDividerToMap(number);
         int counter = 1;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            printSymbol(entry.getKey(), entry.getValue());
+            printNumberDegree(entry.getKey(), entry.getValue());
             if (map.size() > counter)
                 System.out.print(" * ");
             counter++;
@@ -32,32 +32,32 @@ public class FactorPrinter {
      *
      * @param number the number which will print
      */
-    private static Map<Integer, Integer> definerSimpleDividerToMap(long number) {
-        Map<Integer, Integer> divinerDegree = new HashMap<>();
+    private static Map<Integer, Integer> defineSimpleDividerToMap(long number) {
+        Map<Integer, Integer> dividerDegree = new HashMap<>();
         int countDegree = 0;
         for (int divider = 2; divider <= number; divider++) {
             while (number % divider == 0) {
                 number /= divider;
                 countDegree++;
-                divinerDegree.put(divider, countDegree);
+                dividerDegree.put(divider, countDegree);
             }
             countDegree = 0;
         }
-        return divinerDegree;
+        return dividerDegree;
     }
 
     /**
      * Prints degree`s sign or does not print if the number does not have a degree.
      * Support printShortVariation method
      *
-     * @param key   number
-     * @param value degree
+     * @param number number
+     * @param degree degree
      */
-    private static void printSymbol(int key, int value) {
-        if (value <= 1) {
-            System.out.print(key + " ");
+    private static void printNumberDegree(int number, int degree) {
+        if (degree <= 1) {
+            System.out.print(number + " ");
         } else {
-            System.out.print(key + "^" + value);
+            System.out.print(number + "^" + degree);
         }
     }
 }

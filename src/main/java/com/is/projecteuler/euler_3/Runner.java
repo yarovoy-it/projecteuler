@@ -8,7 +8,7 @@ public class Runner {
     public static void main(String[] args) {
 
         printViewNumberDividerDegree(2000000);
-        printViewNumberDividerDegree(20000);
+        printViewNumberDividerDegree(456456);
 
 
     }
