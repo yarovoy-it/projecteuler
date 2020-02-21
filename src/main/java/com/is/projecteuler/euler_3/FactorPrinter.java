@@ -16,7 +16,7 @@ public class FactorPrinter {
      */
     public static void printViewNumberDividerDegree(long number) {
         System.out.print(number + " = ");
-        Map<Integer, Integer> map = defineSimpleDividerToMap(number);
+        Map<Integer, Integer> map = collectNumberDegreeToMap(number);
         int counter = 1;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             printNumberDegree(entry.getKey(), entry.getValue());
@@ -32,7 +32,7 @@ public class FactorPrinter {
      *
      * @param number the number which will print
      */
-    private static Map<Integer, Integer> defineSimpleDividerToMap(long number) {
+    private static Map<Integer, Integer> collectNumberDegreeToMap(long number) {
         Map<Integer, Integer> dividerDegree = new HashMap<>();
         int countDegree = 0;
         for (int divider = 2; divider <= number; divider++) {
