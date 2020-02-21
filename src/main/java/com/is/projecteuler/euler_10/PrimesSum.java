@@ -9,30 +9,41 @@ public class PrimesSum {
 
     public static long SumOfSimpleNumber(long number) {
         long sum = 0;
-        for (int i = 2; i < number; i++) {
-            if (isSimple(i)) {
-                sum += i;
+        for (int index = 2; index < number; index++) {
+            if (isSimple(index)) {
+                sum += index;
             }
 
         }
         return sum;
     }
 
+    /**
+     * testing methods dosen`t work
+     *
+     * @param number
+     * @return
+     */
+    // TODO: 2/21/20
     public static int SumOfSimpleNumberByRec(int number) {
         int sum = 0;
-        if (number < 1) {
-            return sum;
+        int garbege = 0;
+        if (number < 2) {
+            return 0;
         }
-//        if (isSimple(number)) {
-            System.out.println(number);
-            sum = number + SumOfSimpleNumberByRec(number - 1);
-//        }
+        sum = SumOfSimpleNumberByRec(number - 1);
+        System.out.println();
+        if (isSimple(sum)) {
+            return sum += number;
+        } else {
+            garbege += number;
+        }
         return sum;
     }
 
     private static boolean isSimple(int number) {
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0) {
+        for (int index = 2; index < number; index++) {
+            if (number % index == 0) {
                 return false;
             }
         }

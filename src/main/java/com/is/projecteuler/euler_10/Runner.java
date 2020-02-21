@@ -7,8 +7,8 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        System.out.println(SumOfSimpleNumberByRec(4));
-//        System.out.println(SumOfSimpleNumber(4));
+        System.out.println(SumOfSimpleNumberByRec(5));
+//        System.out.println(SumOfSimpleNumber(5));
 
     }
 }
