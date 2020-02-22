@@ -7,42 +7,30 @@ package com.is.projecteuler.euler_10;
  */
 public class PrimesSum {
 
+    /**
+     * Sum of simple number long.
+     *
+     * @param number the number
+     * @return the long
+     */
     public static long SumOfSimpleNumber(long number) {
         long sum = 0;
-        for (int index = 2; index < number; index++) {
-            if (isSimple(index)) {
-                sum += index;
+        for (long prime = 2; prime < number; prime++) {
+            if (isPrime(prime)) {
+                sum += prime;
             }
-
         }
         return sum;
     }
 
     /**
-     * testing methods dosen`t work
+     * Define number is prime
      *
-     * @param number
-     * @return
+     * @param number for inspect
+     * @return false not true prime
      */
-    // TODO: 2/21/20
-    public static int SumOfSimpleNumberByRec(int number) {
-        int sum = 0;
-        int garbege = 0;
-        if (number < 2) {
-            return 0;
-        }
-        sum = SumOfSimpleNumberByRec(number - 1);
-        System.out.println();
-        if (isSimple(sum)) {
-            return sum += number;
-        } else {
-            garbege += number;
-        }
-        return sum;
-    }
-
-    private static boolean isSimple(int number) {
-        for (int index = 2; index < number; index++) {
+    private static boolean isPrime(long number) {
+        for (long index = 2; index * index <= number; index++) {
             if (number % index == 0) {
                 return false;
             }
