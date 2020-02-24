@@ -6,7 +6,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        System.out.println(findLargestPalindrome(0 , 99));
+        System.out.println(findLargestPalindrome(0 , 999));
 
     }
 }
