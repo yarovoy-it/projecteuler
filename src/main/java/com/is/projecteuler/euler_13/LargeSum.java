@@ -1,6 +1,6 @@
 package com.is.projecteuler.euler_13;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
@@ -8,16 +8,23 @@ import java.math.BigDecimal;
  */
 public class LargeSum {
 
-    public static BigDecimal getSum(String stringNumbers) {
-        BigDecimal sum = new BigDecimal("0");
-        if (stringNumbers == null | stringNumbers.length() < 1) {
+    private static final int RESULT_NUMBER = 10;
+
+    /**
+     * Count sum of numbers from array.
+     *
+     * @param arrayNumbers the array numbers
+     * @return the sum
+     */
+    public static String getSum(String[] arrayNumbers) {
+        if (arrayNumbers == null | arrayNumbers.length < 1) {
             throw new IllegalArgumentException("Not correct value");
         }
-        for (int index = 0; index < stringNumbers.length(); index++) {
-            BigDecimal temporary = BigDecimal.valueOf(Character.getNumericValue(stringNumbers.charAt(index)));
-            sum = sum.add(temporary);
+        BigInteger sum = BigInteger.ZERO;
+        for (String tempString : arrayNumbers) {
+            sum = sum.add(new BigInteger(tempString));
         }
-        return sum;
+        return sum.toString().substring(0, RESULT_NUMBER);
     }
 
 
