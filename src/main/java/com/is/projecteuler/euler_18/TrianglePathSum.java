@@ -1,9 +1,6 @@
 package com.is.projecteuler.euler_18;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
@@ -21,28 +18,16 @@ import java.util.Map;
  */
 public class TrianglePathSum {
 
-    public static int countMaxElements(String[] array) {
+    public static int countMaxElements(int[][] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is empty " + null);
         }
-        for (String currentArray : array) {
-            System.out.println(currentArray);
-        }
-        return 0;
+        int maxValue = 0;
+
+        return maxValue;
     }
 
-    public static Map<Integer, List<Integer>> parserStringArrayToMap(String[] array) {
-        Map<Integer, List<Integer>> powValueMap = new HashMap<>();
-        for (int indexString = 0; indexString < array.length; indexString++) {
-            String[] temp = array[indexString].split(" ");
-            List<Integer> listValue = new ArrayList<>();
-            for (int index = 0; index < temp.length; index++) {
-                listValue.add(Integer.parseInt(temp[index]));
-            }
-            powValueMap.put(indexString, listValue);
-        }
-        return powValueMap;
-    }
+
 
 
 }
