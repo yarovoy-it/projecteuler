@@ -13,29 +13,28 @@ public class Multiple {
      * @param to number until what will searching evenly divisible.
      * @return evenly divisible.
      */
-    public static int smallestSimpleDiviner(int to) {
+    public static int defineSmallestDividedNumber(int to) {
         if (1 > to) {
             throw new IllegalArgumentException("Not correct value this number can not be less then " + to);
-
         }
-        int divisible = 1;
-        while (!isDivisible(divisible, to)) {
-            divisible++;
+        int divisibleNumber = 1;
+        while (!isDivisible(divisibleNumber, to)) {
+            divisibleNumber++;
         }
-        return divisible;
+        return divisibleNumber;
     }
 
     /**
      * If smallest positive number that is evenly divisible by all of the numbers from 1 to stopper, will be find
      * return true otherwise false.
      *
-     * @param number
+     * @param number divisible number
      * @param stopper looking until stopper
      * @return true if divider without remainder otherwise false
      */
     private static boolean isDivisible(int number, int stopper) {
-        for (int checker = 1; checker <= stopper; checker++) {
-            if (number % checker != 0) {
+        for (int divider = 1; divider <= stopper; divider++) {
+            if (number % divider != 0) {
                 return false;
             }
         }
