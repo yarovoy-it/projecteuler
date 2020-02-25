@@ -1,6 +1,6 @@
 package com.is.projecteuler.euler_6;
 
-import static com.is.projecteuler.euler_6.Square.differenceSumOfSquareAndSquareOfSum;
+import static com.is.projecteuler.euler_6.SumSquares.differenceSumOfSquareAndSquareOfSum;
 
 public class Runner {
 

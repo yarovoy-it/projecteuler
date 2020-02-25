@@ -12,7 +12,7 @@ package com.is.projecteuler.euler_6;
  * <p>
  * Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
  */
-public class Square {
+public class SumSquares {
 
     /**
      * Difference between the sum of the squares of the "number" and the square of the sum
@@ -21,28 +21,28 @@ public class Square {
      * @return difference between the sum of the squares and the square of the sum
      */
     public static int differenceSumOfSquareAndSquareOfSum(int number) {
-        return squareOfSum(number) - SumOfSquare(number);
+        return squareOfSum(number) - sumOfSquare(number);
     }
 
     /**
-     * Sum of square take each number from 0 to endNumber and multiple itself then sum.
+     * Sum of the square take each number from 0 to endNumber and multiple itself then sum.
      *
-     * @param endNumber the last number of square
-     * @return sum of square
+     * @param endNumber the last number of the square
+     * @return sum of the square
      */
-    private static int SumOfSquare(int endNumber) {
+    private static int sumOfSquare(int endNumber) {
         int sumOfSquare = 0;
-        for (int numberNumber = 0; numberNumber <= endNumber; numberNumber++) {
-            sumOfSquare += numberNumber * numberNumber;
+        for (int naturalNumber = 0; naturalNumber <= endNumber; naturalNumber++) {
+            sumOfSquare += naturalNumber * naturalNumber;
         }
         return sumOfSquare;
     }
 
     /**
-     * Sum of the squares of "number" natural numbers
+     * The square of the sum number.
      *
      * @param number from it will get sum of square
-     * @return Sum of the squares
+     * @return square of the sum
      */
     public static int squareOfSum(int number) {
         int sum = (number * (number + 1)) / 2;
