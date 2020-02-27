@@ -14,9 +14,4 @@ public class LatterNumberStorage {
         return new String[]{"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
     }
 
-    public static String[] hundreds() {
-        return new String[]{"", "one hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred", "seven hundred", "eight hundred", "nine hundred"};
-    }
-
-
 }
