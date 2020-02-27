@@ -25,27 +25,27 @@ public class ConverterNumberToWriting {
      * @return number of string
      */
     public static String getLatterNumber(int number) {
-        if (number > ONE_THOUSAND | number < 1) {
+        if (number > ONE_THOUSAND) {
             throw new IllegalArgumentException("Number have to be less then " + ONE_THOUSAND + " or bigger then 0 our value = " + number);
         }
         if (number == ONE_THOUSAND) {
             return "one thousand";
         }
         if (number < TWENTY) {
-            return LatterNumberStorage.ones()[number];
+            return LatterNumberStorage.ones().get(number);
         }
         if (number < ONE_HUNDRED) {
             String withHyphen = getLatterNumber(number % TEN);
             if (withHyphen.length() > 0) {
                 withHyphen = HYPHEN + withHyphen;
             }
-            return LatterNumberStorage.tens()[number / TEN] + withHyphen;
+            return LatterNumberStorage.tens().get(number / TEN) + withHyphen;
         }
         String withAnd = getLatterNumber(number % ONE_HUNDRED);
         if (withAnd.length() > 0) {
             withAnd = " and " + withAnd;
         }
-        return LatterNumberStorage.ones()[number / ONE_HUNDRED] + HUNDRED + withAnd;
+        return LatterNumberStorage.ones().get(number / ONE_HUNDRED) + HUNDRED + withAnd;
     }
 
     /**

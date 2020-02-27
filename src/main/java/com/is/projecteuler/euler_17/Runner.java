@@ -6,7 +6,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        System.out.println(countNumberLatter(20,10));
-        System.out.println(getLatterNumber(454));
+        System.out.println(countNumberLatter(1,1000));
+        System.out.println(getLatterNumber(300));
     }
 }
