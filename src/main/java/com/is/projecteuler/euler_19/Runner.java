@@ -8,7 +8,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        System.out.println(countDayOfWeekFirstDayOfMonth(1901, 2000, DayOfWeek.SUNDAY));
+        System.out.println(countDayOfWeekFirstDayOfMonth(2020, 2020, DayOfWeek.MONDAY));
 
     }
 }

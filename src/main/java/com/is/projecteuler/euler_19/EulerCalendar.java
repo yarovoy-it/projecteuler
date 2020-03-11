@@ -25,33 +25,38 @@ public class EulerCalendar {
      * Count day of week if it first day of month
      *
      * @param firstYear     year when starting to count days of week
-     * @param latsYear      year when finish to count days of week
+     * @param lastYear      year when finish to count days of week
      * @param dayOfWeekEnum DayOfWeek enum from ava.time.DayOfWeek
      * @return amount day of week on first day of month
      */
-    public static int countDayOfWeekFirstDayOfMonth(int firstYear, int latsYear, DayOfWeek dayOfWeekEnum) {
-        if (firstYear > latsYear | firstYear < BASE_YEAR) {
+    public static int countDayOfWeekFirstDayOfMonth(int firstYear, int lastYear, DayOfWeek dayOfWeekEnum) {
+        if (firstYear > lastYear | firstYear < BASE_YEAR) {
             throw new IllegalArgumentException("wrong value");
         }
+        int baseYear = 1900;
         int amountDayFirst = 0;
         int dayOfWeek = 0;
         int month = 1;
-        while (firstYear < latsYear) {
-            Map<Integer, Integer> monthWithDay = getMapMonthDays(firstYear);
+        while (baseYear <= lastYear) {
+            if(baseYear==1950){
+                System.out.println("--");
+            }
+            Map<Integer, Integer> monthWithDay = getMapMonthDays(baseYear);
             for (int dayOfMonth = 1; dayOfMonth <= monthWithDay.get(month); dayOfMonth++) {
                 dayOfWeek++;
-                if (dayOfWeek == dayOfWeekEnum.getValue() && dayOfMonth == 1 && BASE_YEAR <= firstYear) {
+                if (dayOfWeek == dayOfWeekEnum.getValue() & dayOfMonth == 1 & firstYear <= baseYear) {
                     amountDayFirst++;
                 }
-                if (dayOfWeek == dayOfWeekEnum.getValue()) {
-                    dayOfWeek = 0;
+
+                if (dayOfWeek == 7) {
+                    dayOfWeek  -= 7;
                 }
             }
             if (month < 12) {
                 month++;
             } else {
                 month = 1;
-                firstYear++;
+                baseYear++;
             }
         }
         return amountDayFirst;
