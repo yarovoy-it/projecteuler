@@ -1,5 +1,6 @@
 package com.is.projecteuler.euler_19;
 
+import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,76 +19,75 @@ import java.util.Map;
  */
 public class EulerCalendar {
 
-    private static final String STARTING_DATE = "1 Jan 1901 was a Monday";
+    private static final int BASE_YEAR = 1900;
 
-    public static int getDaysOfYear(int year) {
-        int monthOf30Days = 30 * 4;
-        int monthOf31Days = 31 * 7;
-        int february = 0;
-        if (year % 4 == 0 & year % 100 != 0) {
-            february = 29;
-        } else {
-            february = 28;
+    /**
+     * Count day of week if it first day of month
+     *
+     * @param firstYear     year when starting to count days of week
+     * @param latsYear      year when finish to count days of week
+     * @param dayOfWeekEnum DayOfWeek enum from ava.time.DayOfWeek
+     * @return amount day of week on first day of month
+     */
+    public static int countDayOfWeekFirstDayOfMonth(int firstYear, int latsYear, DayOfWeek dayOfWeekEnum) {
+        if (firstYear > latsYear | firstYear < BASE_YEAR) {
+            throw new IllegalArgumentException("wrong value");
         }
-        return monthOf30Days + monthOf31Days + february;
-    }
-
-    public static int countSundaysFirstDayOfMonth(int startYear, int endYear) {
-        int sundaysCount = 0;
-        int dayOfWeak = 1;
-        int daysOfMouth = 0;
+        int amountDayFirst = 0;
+        int dayOfWeek = 0;
         int month = 1;
-        while (startYear <= endYear) {
-            Map monthWithDay = storeMouthDay(startYear);
-            for (int day = 1; day <= (Integer) monthWithDay.get(month); day++) {
-                dayOfWeak++;
-                if (day == dayOfWeak && day == 1) {
-                    sundaysCount++;
+        while (firstYear < latsYear) {
+            Map<Integer, Integer> monthWithDay = getMapMonthDays(firstYear);
+            for (int dayOfMonth = 1; dayOfMonth <= monthWithDay.get(month); dayOfMonth++) {
+                dayOfWeek++;
+                if (dayOfWeek == dayOfWeekEnum.getValue() && dayOfMonth == 1 && BASE_YEAR <= firstYear) {
+                    amountDayFirst++;
                 }
-                if (dayOfWeak == 7) {
-                    dayOfWeak -= 7;
+                if (dayOfWeek == dayOfWeekEnum.getValue()) {
+                    dayOfWeek = 0;
                 }
             }
-            if (month <= 12) {
+            if (month < 12) {
                 month++;
             } else {
-                startYear++;
+                month = 1;
+                firstYear++;
             }
         }
-        return sundaysCount;
+        return amountDayFirst;
     }
 
-    public static int countAllSundaysByYear(int year) {
-        int countSundays = 0;
-        int restDays = 0;
-        for (int yearCount = 1901; yearCount < year; yearCount++) {
-            int days = getDaysOfYear(yearCount);
-            restDays = days % 7;
-            countSundays += (restDays + days) / 7;
-        }
-        return countSundays;
+    /**
+     * define year of leap or not
+     *
+     * @param year year for check
+     * @return isLeap
+     */
+    private static boolean isLeap(int year) {
+        return (year % 4 == 0 & year % 100 != 0);
     }
 
-
-    private static Map<Integer, Integer> storeMouthDay(int year) {
-        Map<Integer, Integer> map = new HashMap<>();
-        if (year % 4 == 0 & year % 100 != 0) {
-            map.put(2, 29);
-        } else {
-            map.put(2, 28);
-        }
-        map.put(1, 31);
-        map.put(3, 31);
-        map.put(4, 30);
-        map.put(5, 31);
-        map.put(6, 30);
-        map.put(7, 31);
-        map.put(8, 31);
-        map.put(9, 30);
-        map.put(10, 31);
-        map.put(11, 30);
-        map.put(12, 31);
-        return map;
+    /**
+     * Return map of mouth where key is number of mouth value amount days
+     *
+     * @param year for filling up
+     * @return map of month and days
+     */
+    private static Map<Integer, Integer> getMapMonthDays(int year) {
+        Map<Integer, Integer> monthDays = new HashMap<>();
+        monthDays.put(1, 31);
+        monthDays.put(2, isLeap(year) ? 29 : 28);
+        monthDays.put(3, 31);
+        monthDays.put(4, 30);
+        monthDays.put(5, 31);
+        monthDays.put(6, 30);
+        monthDays.put(7, 31);
+        monthDays.put(8, 31);
+        monthDays.put(9, 30);
+        monthDays.put(10, 31);
+        monthDays.put(11, 30);
+        monthDays.put(12, 31);
+        return monthDays;
     }
 
 }
