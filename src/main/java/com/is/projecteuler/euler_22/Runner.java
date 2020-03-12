@@ -1,12 +1,13 @@
 package com.is.projecteuler.euler_22;
 
-import static com.is.projecteuler.euler_22.FileParser.getFile;
+import java.util.List;
+
+import static com.is.projecteuler.euler_22.FileParser.*;
 
 public class Runner {
 
     public static void main(String[] args) {
 
-        getFile();
-
+        System.out.println(getScoreName(getFile()));
     }
 }
